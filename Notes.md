@@ -12,3 +12,32 @@
         -   iOS: use the default camera app
     -   Run the web app: press 'w' in the terminal
         -   opens the web app in the default web browser
+
+## Expo Router Basics
+
+`Expo Router` - a file-based routing framework for React Native and web apps
+
+-   manages navigation between screens
+-   uses the same components across multiple platforms
+
+### [Expo Conventions](https://docs.expo.dev/router/introduction/)
+
+1. app directory
+
+-   contains only routes and their layouts
+-   any files added to this directory become a screen inside our native app and a page on the web.
+
+2. root layout
+
+-   app/\_layout.tsx file
+-   defines shared UI element so that they are consistent between different routes (ex. headers, tab bars, etc.)
+
+3. File name conventions
+
+-   index file names match their parent directory and do not add a path segment (ex. index.tsx file in the app directory matches / route)
+
+4. route file
+
+-   exports a React component as its default value
+-   can use either .js, .jsx, .ts, or .tsx extension
+-   Android, iOS, and web share a unified navigation structure

@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { styles } from ".";
+import { styles } from "./index";
 
 export default function AboutScreen() {
     return (

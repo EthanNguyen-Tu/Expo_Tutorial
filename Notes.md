@@ -20,6 +20,11 @@
 -   manages navigation between screens
 -   uses the same components across multiple platforms
 
+`+not-found` - special route for a fallback screen display when a route does not exist
+
+-   useful for displaying a custom screen when navigating to an invalid route on mobile instead of crashing the app or displaying a 404 error on web
+-   Expo Router uses a special `+not-found.tsx` file
+
 ### [Expo Conventions](https://docs.expo.dev/router/introduction/)
 
 1. app directory

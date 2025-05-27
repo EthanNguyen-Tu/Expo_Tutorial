@@ -46,3 +46,9 @@
 -   exports a React component as its default value
 -   can use either .js, .jsx, .ts, or .tsx extension
 -   Android, iOS, and web share a unified navigation structure
+
+## Ch.3
+
+-   `npx expo install <library-name>` - command that installs the library and adds it to the project's dependencies in package.json
+-   `@` - symbol that is a custom path alias for importing custom components and other modules instead of relative paths
+    -   Expo CLI automatically configures the symbol in tsconfig.json

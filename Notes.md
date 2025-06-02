@@ -132,6 +132,24 @@
 
 -   `pickImageAsync()` - implemented function taht invokes the ImagePicker.launchImageLibraryAsync() method and handles the result
 
+## Ch. 6: Add Gestures
+
+-   [React Native Gesture Handler](https://docs.swmansion.com/react-native-gesture-handler/docs/) - library that provides built-in native components taht can handle gestures
+    -   recognizes pan, tap, rotation, etc.
+    -   double tap scales the size of the emoji sticker and double tapping again reduces the scale
+    -   pan allows the smoji sticker to move aroudn the screen, allowing users to place the sticker anywhere in the image
+-   an `Animated` component looks at the style prop of a component and determines which values to animate and apply updates to create an animation
+    -   `<Animated.View>`, `<Animated.Text>`, `<Animated.ScrollView>`
+-   `useSharedValue()` - hook that helps mutate data and run animations based on the current value
+    -   can access and modify a shared value using the .value property
+    -   `Gesture.Tap()` - allows animatintg the transition when scaling a ticker image
+    -   `numberofTaps(#)` - specifying '#' determines the number of taps required
+-   `withSpring()` - function provided by react-native-reanimated that provides an animatino based on the real-world physics of a spring
+-   `useAnimatedStyle()` - hook that creates a style object
+    -   allows updating sytles using shared values when an animation happens
+    -   allows scaling image size by manipulating 'width' and 'height' properties
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
+   s

@@ -1,10 +1,14 @@
 # Expo_Tutorial
 
-Project follows "Tutorial: Using React Native and Expo" at [https://docs.expo.dev/tutorial/introduction/](https://docs.expo.dev/tutorial/introduction/).
+Project follows ["Tutorial: Using React Native and Expo"](https://docs.expo.dev/tutorial/introduction/) and ["EAS Tutorial"](https://docs.expo.dev/tutorial/eas/introduction/).
 
 # Completed Objectives
 
-The objective of this tutorial is to get started with Expo and become familiar with the Expo SDK. It'll cover the following topics:
+The objective of the tutorials is to get started with Expo, become familiar with the Expo SDK, and gain proficiency with Expo Application Services (EAS) core services: Build, Submit, and Update.
+
+## [Tutorial: Using React Native and Expo](https://docs.expo.dev/tutorial/introduction/)
+
+Topics:
 
 1. Create an app using the default template with TypeScript enabled
 2. Implement a two-screen bottom tabs layout with Expo Router
@@ -15,3 +19,15 @@ The objective of this tutorial is to get started with Expo and become familiar w
 7. Use third-party libraries to capture a screenshot and save it to the disk
 8. Handle platform differences between Android, iOS, and web
 9. Finally, go through the process of configuring a status bar, a splash screen, and an icon to complete the app
+
+# [EAS Tutorial](https://docs.expo.dev/tutorial/eas/introduction/).
+
+Topics:
+
+1. Use EAS Build to create and install a development build, then run it on a device, emulator, or simulator
+2. Experience the benefits of using a development build instead of Expo Go
+3. Implement workflows for sharing development builds with a team or external stakeholders
+4. Automatically increment app build versions
+5. Simultaneously install different app variants, like development and preview, on one device
+6. Utilize EAS Update to create and deploy updates swiftly during the development phase
+7. Automate build processes by integrating with a GitHub repository

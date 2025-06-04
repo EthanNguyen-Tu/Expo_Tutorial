@@ -162,6 +162,11 @@
         -   status is 'granted' when access is given
 -   [React Native Directory](https://reactnative.directory/)
 
+## Ch. 8: Handle platform differences
+
+-   Android and iOS can capture a screenshot with react-native-view-shot library but web browsers cannot
+-   `dom-to-image` - library that takes a screenshot of any DOM node and turns it into a vector (SVG) or raster (PNG or JPEG) image
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)

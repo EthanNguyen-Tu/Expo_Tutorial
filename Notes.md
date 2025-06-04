@@ -166,6 +166,18 @@
 
 -   Android and iOS can capture a screenshot with react-native-view-shot library but web browsers cannot
 -   `dom-to-image` - library that takes a screenshot of any DOM node and turns it into a vector (SVG) or raster (PNG or JPEG) image
+-
+
+## Ch. 9: Configure status bar, splash screen, and app icon
+
+-   `expo-status-bar` - library that comes pre-installed in every project created using create-expo-app
+    -   provides a status bar component to confdigure the app's status bar style
+-   'icon.png' - 1024x1024 px image for the app icon
+    -   the "icon" property in the app.json file configures the app icon's path
+        -   default for a new Expo project defines the correct path as "./assets/images/icon.png"
+    -   splash screen - the screen visible before the app's content is loaded that hides once the app's content is ready to be displayed
+        -   `expo-splash-screen` - plugin preinstalled in every project created using create-expo-app
+            -   library that provides a config plugin to configure the splash screen
 
 ## References
 

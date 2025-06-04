@@ -149,7 +149,19 @@
     -   allows updating sytles using shared values when an animation happens
     -   allows scaling image size by manipulating 'width' and 'height' properties
 
+## Ch.7: Take a screenshot
+
+-   react-native-view-shot - allows taking a screenshot within an app
+    -   captures the screenshot of a `<View>` as an image using the 'captureRef()' method
+    -   `captureRef()` method from react-native-view-shot that returns the URI of the captured screenshot image file
+        -   also returns a promise that fulfills with the screenshot's URI
+        -   passing the returned URI as a parameter to 'MediaLibrary.saveToLibraryAsync()' saves the screenshot to the device's media library
+-   expo-media-library - allows saving an image onto the device's media library
+    -   `usePermissions()` - hook to propt for permission to allow or deny access
+        -   value of status is 'null' on default when the app loads for the first time and permission status is neither granted or denied
+        -   status is 'granted' when access is given
+-   [React Native Directory](https://reactnative.directory/)
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
-   s

@@ -2,13 +2,15 @@ import { View, StyleSheet, ImageSourcePropType } from "react-native";
 import ImageViewer from "@/app/components/ImageViewer";
 import Button from "@/app/components/Button";
 import * as ImagePicker from "expo-image-picker";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import CircleButton from "@/app/components/CircleButton";
 import IconButton from "@/app/components/IconButton";
 import EmojiPicker from "@/app/components/EmojiPicker";
 import EmojiList from "@/app/components/EmojiList";
 import EmojiSticker from "@/app/components/EmojiSticker";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import * as MediaLibrary from "expo-media-library";
+import { captureRef } from "react-native-view-shot";
 
 const PlaceholderImage = require("@/assets/images/background-image.png");
 
@@ -21,6 +23,12 @@ export default function Index() {
     const [pickedEmoji, setPickedEmoji] = useState<
         ImageSourcePropType | undefined
     >(undefined);
+    const [status, requestPermission] = MediaLibrary.usePermissions();
+    const imageRef = useRef<View>(null);
+
+    if (status === null) {
+        requestPermission();
+    }
 
     const pickImageAsync = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -49,12 +57,28 @@ export default function Index() {
         setIsModalVisible(false);
     };
 
-    const onSaveImageAsync = async () => {};
+    const onSaveImageAsync = async () => {
+        try {
+            const localUri = await captureRef(imageRef, {
+                format: "png",
+                height: 440,
+                quality: 1,
+            });
+
+            await MediaLibrary.saveToLibraryAsync(localUri);
+
+            if (localUri) {
+                alert("Saved!");
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     return (
         <GestureHandlerRootView style={styles.container}>
             <View style={styles.container}>
-                <View style={styles.imageContainer}>
+                <View ref={imageRef} collapsable={false}>
                     <ImageViewer
                         imgSource={PlaceholderImage}
                         selectedImage={selectedImage}

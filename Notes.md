@@ -179,6 +179,41 @@
         -   `expo-splash-screen` - plugin preinstalled in every project created using create-expo-app
             -   library that provides a config plugin to configure the splash screen
 
+## Ch. 10: Configure a development build
+
+-   development build - a debug version of a project optimized for quick iterations when creating an app
+    -   contains the 'expo-dev-client' library
+        -   'expo-dev-client' - library that offers a robust and complete development environment
+        -   allows integrating any library or change code inside the native directories as required
+
+|           Feature           |                                                   Development Builds                                                    |                                               Expo Go                                               |
+| :-------------------------: | :---------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------: |
+|      Development phase      |                               Offers web-like iteration speed for mobile app development                                |          Allows for quick iteration and testing of Expo SDK projects using the client app           |
+|        Collaboration        |                                  Facilitates team testing with shared native runtime.                                   |                            Easy project sharing via QR codes on a device                            |
+| Third-party library support |                Full support for any third-party library, including those that require custom native code                |        Limited to libraries within the Expo SDK, not suitable for custom native dependencies        |
+|        Customization        |                      Extensive customization wiht config plugins and direct access to native code                       | Limited customization with a focus on Expo SDK capabilities without direct native code modificaiton |
+|        Intended use         | Ideal for full-fledged app development aimed at store deployment, offering a complete development environment and tools |     Ideal for learning, prototyping, and experimenting <br> Not recommended for production apps     |
+
+### Login to Expo Account
+
+-   `eas login` - terminal command that asks for Expo account email or username and password to login
+-   `eas init` - termianl command that initializes and links a project to EAS servers
+-   'projectId' - a unique identifier for a project in app.json under extra.eas.projectId
+    -   property's value is used to identify the project on EAS servers
+-   `eas build:configure` - command that prompts to select a platform: Android, iOS, or All and creates eas.json in the root of the project directory
+    -   'eas.json' - defines the curerent EAS CLI version and adds three build profiles: development, preview, and production
+        -   is a collection of different build profiles
+            -   each profile is tailored with distinct configurations to produce specific build types
+            -   each profile can include platform=spoecific settings for Android and iOS
+        -   development profile:
+            -   configuration: 'developmentClient' - enabled true for creating a debug build
+                -   loads the app using the expo-dev-client library
+                    -   provides development tools and generates a build artifact for device or emulator/simulator installation
+                    -   supports updating JavaScript on the fly
+            -   configuration: 'distribution' - configured as 'internal' to indicate that we want to share the build internally instead of uploading it on app stores
+        -   [customizing build profiles](https://docs.expo.dev/build/eas-json/#build-profiles)
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
+2. [EAS tutorial] (https://docs.expo.dev/tutorial/eas/introduction/)

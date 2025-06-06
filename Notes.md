@@ -213,7 +213,25 @@
             -   configuration: 'distribution' - configured as 'internal' to indicate that we want to share the build internally instead of uploading it on app stores
         -   [customizing build profiles](https://docs.expo.dev/build/eas-json/#build-profiles)
 
+## Ch. 11: Android development build
+
+-   the development build must be in the .apk
+    -   the default Android format of .aab, ideal for Google Play Store distribution, cannot be installed on devices or emulators
+-   Android application ID - the package name for the Android app stored in DNS reverse notation format (com.owner.appname)
+    -   each component should start with a lowercase letter
+-   a build details page displays the build type, profile, Expo SDK version, app version, version code, last commit hash, and the identify of the developer or account owner who initiated the build
+
+### Creating a .apk
+
+1.  Set 'developmentClient' to true in 'eas.json' under the 'build.development' profile
+2.  run `eas build` in terminal with 'android as the platform and 'development' as the build profile
+    -   `eas build --platform android --profile development`
+        -   can use '-p' to specify platform
+3.  Press 'return' for "What would you like your Android application id to be?" to select the default value provided
+    -   adds 'android.package' in 'app.json'
+4.  Press 'Y' for "Generate a new Android Keystore?"
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
-2. [EAS tutorial] (https://docs.expo.dev/tutorial/eas/introduction/)
+2. [EAS tutorial](https://docs.expo.dev/tutorial/eas/introduction/)

@@ -295,6 +295,15 @@
                     -   If app doesn't use encryption, it sets ITSAppUsesNonExemptEncryption in the Info.plist file to NO and manages the compliance check for the same when you are releasing your app to TestFlight/Apple App Stores
                     -   When releasing own app, and it uses encryption, select "N" to skip this prompt next time
 
+## Ch. 14: Multiple app variants
+
+-   changing the Android Application ID and/or iOS Bundle Identifier causes the EAS CLI to prompt the genreate of a new Keystore for Android and a new provisioning profile for iOS
+-   script: "APP_VARIANT=development npx expo start"
+    -   run with `npm run dev`
+    -   evaluates app.config.js locally and loads the environment variable for the development profile
+-   "app.json" for static values
+-   "app.config.js" for dynamic values
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)

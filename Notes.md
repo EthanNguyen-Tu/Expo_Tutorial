@@ -237,18 +237,63 @@
 -   development builds for iOS simulators are generated in the .app format
     -   different from iOS devices
 -   `eas build --platform ios --profile ios-simulator`
-    -   prompts
-        -   "What would you like your iOS bundle identifier to be?"
+
+    -   Prompts:
+
+        1.  "What would you like your iOS bundle identifier to be?"
+
             -   Press "return" to select the default value provided
             -   adds "ios.bundleIdentifier" in "app.json"
                 -   "ios.bundleIdentifier" - property that contains a unique name of the app used by the Apple App Store with its value to identify the app on the store
                 -   notation: host.owner.app-name
                     -   ex. com.owner.stickersmash where com.owner is the domain and stickersmash is the app name
-        -   iOS app only uses standard/exempt encryption?
+
+        2.  iOS app only uses standard/exempt encryption?
+
             -   Press "Y" top select the default value provided for the prompt
             -   sets "ITSAppUsesNonExemptEncryption" in the "Info.plist" file to "NO" and manages the compliance check for the same when you are releasing your app to TestFlight/Apple App Store
             -   when you are releasing your own app, it uses encryption, so select "N" to skip the prompt
+
 -   [iOS build process](https://docs.expo.dev/build-reference/ios-builds/)
+
+## [Ch. 13: Create and run a cloud build for iOS device](https://docs.expo.dev/tutorial/eas/ios-development-build-for-devices/)
+
+-   development builds for iOS devicdes are generated in .ipa format, standard for iOS app installations
+-   [Necessary App Credentials](https://docs.expo.dev/app-signing/app-credentials/#ios)
+-   [iOS Developer Mode](https://docs.expo.dev/guides/ios-developer-mode/)
+-   `eas device:create` - register a new Apple device
+-   Question Prompts:
+    -   "Would you like to use the your-account-name account?
+        -   Press "Y"
+    -   "Apple ID"
+        -   Enter Apple ID to then log in to the Apple Developer Account
+    -   "How would you like to register your devices?"
+        -   Select "Website" to generate a registration URL that can be opened on the iOS device
+            -   the provisioning profil link can be shared with multiple devices for downloading and installing the profile
+-   `eas build --platform ios --profile development`
+
+    -   prompts:
+
+        1.  "What would you like your iOS bundle identifier to be?"
+
+            -   Press "return" to select the default value
+            -   adds ios.bundleIdentifier in app.json if not already defined
+
+        2.  "Do you want to log into your Apple account?"
+
+            -   if creating a development build for the first time, also asks to "Generate a new Apple Distribution Certificate"
+            -   Press "Y" to both prompts
+
+        3.  "Select a device for ad hoc build"
+
+            -   Select one or all registered devices and press "return" to install the build on the devices later
+
+        4.  CASE: Skipped iOS Simulator chapter
+
+            -   "iOS app only uses standard/exempt encryption?"
+                -   Press Y to select the default value
+                    -   If app doesn't use encryption, it sets ITSAppUsesNonExemptEncryption in the Info.plist file to NO and manages the compliance check for the same when you are releasing your app to TestFlight/Apple App Stores
+                    -   When releasing own app, and it uses encryption, select "N" to skip this prompt next time
 
 ## References
 

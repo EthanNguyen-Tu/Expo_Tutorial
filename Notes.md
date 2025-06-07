@@ -326,6 +326,31 @@
     -   `eas device:create` - used to register more iOS devices and gives a URL/QR code to share for device registration
     -   `eas build:resign` - command that can be used to re-sign an existing iOS .ipa with a new ad hoc provisioning profile, eliminate the need for a full rebuild
 
+# Ch. 16: Manage app versions
+
+-   an app version is composed of:
+    1. developer facing value
+        - represented by `versionCode` for Android
+        - represented by `buildNumber` for iOS
+        - relied on to identify each unique build
+            - if an app is uploaded with a certain app version, another build cannot be submitted with the same app version
+                - submitting builds with duplicate app version numbers results in a failed submission
+        - located in app.config.js
+        - EAS Build automates adding and managing these values
+            - utilizes [remote version source](https://docs.expo.dev/build-reference/app-versions/#remote-version-source) to automatically increment the developer facing values whenever a new production release is made
+                - need to set `cli.appVersionSource` to remote in eas.json and `autoIncrement` property to true under the production build profile to enable
+                    - EAS CLI automatically adds the properties when a project is initialized with `eas init`
+        - when migrating an app to use EAS Build, run `eas build:version:set`
+            - select the platform when prompted (Android or iOS)
+            - select "yes" to "Do you want ot set app version source to remote now?" to set the cli.appVersionSource to remote in eas.json
+            - enter the last version numbner set in the app stores when prompted with "What version would you like to initialize with?"
+            - syncs app versions to EAS Build remotely
+                - setting build.production.autoIncrement to true in eas.json automatically increments the developer facing values automatically when you create a new production build
+    2. user facing value
+        - represented by `version` in app.config.js
+        - not handled by EAS
+        - defined in the app store developer portals before submitting the production app for review
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)

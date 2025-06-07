@@ -304,6 +304,28 @@
 -   "app.json" for static values
 -   "app.config.js" for dynamic values
 
+## Ch. 15: Internal distribution build
+
+-   Internal sharing of apps:
+    -   Android = Google Play beta
+    -   iOS = TestFlight
+        -   limits to one active build at a time
+-   EAS Build - creates shareable links for builds and provides instructions on using them
+    -   has a default configuation designed to facilitate internal distribution
+    -   setting in "eas.json" build.distribution to "internal" allows sharing build URLs with anyone so they can install it on their device and does not require a development server to run the app
+    -   internal distribution builds requires Android to be in .apk and iOS in .ipa formats
+        -   distribution set to internal automatically creates the app binary in these file formats for devices
+-   creating an internal distribution build requires [app signing credentials](https://docs.expo.dev/app-signing/app-credentials/)
+    -   Android allows installing any compatible .apk file
+        -   app signing is non-restrictive
+        -   a new Android Keystore is generated when a development build is created, so there is no need to generate a new keystore for preview builds
+    -   For Apple, an ad hoc provisioning profile that explicitly lists the devices allowed to run the app is needed
+        -   [Apple Developer Enterprise Program](https://developer.apple.com/programs/enterprise/) can be used by some organizations whose apps meet specific requirements to distribute apps internally to a larger audience
+            -   costs $299 USD/year and not all organizations are eligible
+    -   Apps signed with an ad hoc provisioning profile can be installed by an iOS devices whose UDID is registered with the provisioning profile
+    -   `eas device:create` - used to register more iOS devices and gives a URL/QR code to share for device registration
+    -   `eas build:resign` - command that can be used to re-sign an existing iOS .ipa with a new ad hoc provisioning profile, eliminate the need for a full rebuild
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)

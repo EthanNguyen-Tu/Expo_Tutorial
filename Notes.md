@@ -351,6 +351,30 @@
         - not handled by EAS
         - defined in the app store developer portals before submitting the production app for review
 
+## Ch. 17: Android production build
+
+-   publishing and distributing an app on the Google Play Store requirements:
+    1. [Google Play Developer Account (paid)](https://play.google.com/apps/publish/signup/)
+    2. [Google Service Account key](https://expo.fyi/creating-google-service-account)
+        - required for automating the release process, optional otherwise
+    3. Production build profile
+        - Added by default, but should be ensured that it is present in eas.json
+-   a production Android build is in .aab format
+    -   optimized for distribution on the Google Play Store
+    -   .aab files can only be distributed and installed through the Google Play Store
+-   can use [EAS Submit](https://docs.expo.dev/submit/introduction/) to automate releasese and avoid the manual process
+    1. Add service account key to project's eas.json
+        1. Copy the JSON file from Google Service Account to the project's root directory
+        2. Exclude the file from version control by listing it in .gitignore
+    2. for internal release, add the path to the Google Service Account fiel path in eas.json
+        1. `submit.production` profile, add `android.serviceAccountKeyPath` and the relative file path as its value
+        2. Adding the "track" property
+            - setting its value to "internal" enables `eas submit` to upload the production build and release it for internal testing on the Google Play Store
+            - setting its value to "production" releases the app for production
+        3. `eas submit --platform android` - automatically creates a neww internal release version in the Google Play console
+-   using the `--auto-submit` flag with `eas build` streamlines the process of subsequent releases by combining build creation and Play Store submission into a single step
+    -   `eas build --platform android --auto-submit`
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)

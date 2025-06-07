@@ -220,6 +220,7 @@
 -   Android application ID - the package name for the Android app stored in DNS reverse notation format (com.owner.appname)
     -   each component should start with a lowercase letter
 -   a build details page displays the build type, profile, Expo SDK version, app version, version code, last commit hash, and the identify of the developer or account owner who initiated the build
+-   `eas build:dev` - installs and runs a cached development build, or creates a new one if a compatible build does not exist yet
 
 ### Creating a .apk
 
@@ -230,6 +231,24 @@
 3.  Press 'return' for "What would you like your Android application id to be?" to select the default value provided
     -   adds 'android.package' in 'app.json'
 4.  Press 'Y' for "Generate a new Android Keystore?"
+
+## Ch. 12: iOS development build for simulators
+
+-   development builds for iOS simulators are generated in the .app format
+    -   different from iOS devices
+-   `eas build --platform ios --profile ios-simulator`
+    -   prompts
+        -   "What would you like your iOS bundle identifier to be?"
+            -   Press "return" to select the default value provided
+            -   adds "ios.bundleIdentifier" in "app.json"
+                -   "ios.bundleIdentifier" - property that contains a unique name of the app used by the Apple App Store with its value to identify the app on the store
+                -   notation: host.owner.app-name
+                    -   ex. com.owner.stickersmash where com.owner is the domain and stickersmash is the app name
+        -   iOS app only uses standard/exempt encryption?
+            -   Press "Y" top select the default value provided for the prompt
+            -   sets "ITSAppUsesNonExemptEncryption" in the "Info.plist" file to "NO" and manages the compliance check for the same when you are releasing your app to TestFlight/Apple App Store
+            -   when you are releasing your own app, it uses encryption, so select "N" to skip the prompt
+-   [iOS build process](https://docs.expo.dev/build-reference/ios-builds/)
 
 ## References
 

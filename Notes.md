@@ -402,7 +402,34 @@
     -   after logging into the Apple account, Y to reuse this App Store Connect API Key to trigger the submission process
 -   `eas build --platform ios --auto-submit` - combines build creation and App Store submission into a sigle step
 
+## Ch. 19: Share previews with your team
+
+-   EAS Update - allows sharing changes with a team
+    -   `eas update:configure` - command that adds the "updates" and "runtimeVersion" properties with their values from EAS to make a project compatible with EAS Update
+        -   using dynamic app.config.js, manually copy the values to app.config.js before rerunning `eas update:configure` to continue the setup process
+        -   a channel should be added to every build profile in eas.json (ex. "channel": "development")
+            -   if a build profile extends another profile, removing the added "channel" property safely prevents the profile from having a separate channel
+            -   channel - a name given to multiple builds used to group builds together and identify them easily
+                -   defined in eas.json
+                -   allows telling EAS Update to target a specific channel, which causes the update to affect all builds with the same specific channel
+-   expo-updates - library that allows initialiizing a project and sending updates
+    -   `npx expo install expo-updates`
+    -   a new development build needs to be created, since hte last build does not contain the expo-updates library
+        -   `eas build --platform all --profile development`
+            -   all can be ios or android for a specific platform
+    -   `eas update --channel development --message "Message"` - updates the builds with the specified channel of development
+        -   when an EAS Update chanel is made, it automatically gets mapped to a branch with the same name
+        -   the CLI prompts with information about an update after it is published
+-   Steps to preview a live update in a development build:
+    1.  log in to the Expo account within the development build
+    2.  open the Extensions tab
+    3.  look for Branch: development listed under EAS Update
+    4.  tap on Open to access the update
+-   updates for non-development builds like preview or production are automatically downloaded to the device when the app starts up and makes a request for any new updates
+    -   to test an update when the app is currently open, force close and reopen the app twice to download and view the changes
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
 2. [EAS tutorial](https://docs.expo.dev/tutorial/eas/introduction/)
+3. [How EAS Update works](https://docs.expo.dev/eas-update/how-it-works/)

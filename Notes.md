@@ -2,6 +2,7 @@
 
 ## Ch. 1: Create your first app
 
+-   `npx create-expo-app@latest project-name` - creates a new Expo app
 -   `Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process` - temporarily allows scripts in the PowerShell session
 -   `reset-project` - script that resets the app directory structure in a project and copies the previous boilerplate files from the project's root directory to another sub-directory called app-example
 -   `npx expo start` - when ran in the terminal, it starts the development server and provides a QR code inside the terminal window
@@ -374,6 +375,32 @@
         3. `eas submit --platform android` - automatically creates a neww internal release version in the Google Play console
 -   using the `--auto-submit` flag with `eas build` streamlines the process of subsequent releases by combining build creation and Play Store submission into a single step
     -   `eas build --platform android --auto-submit`
+
+## Ch. 18: Create a production build for iOS
+
+-   [Apple Developer Portal](https://developer.apple.com/account/)
+-   produciton build profile
+    -   in eas.json
+    -   added by default
+-   production iOS build - optimized for Apple's App Store Connect
+    -   Apple's App Store Connect - allows distributing builds to testers with TestFlight and public end users through the App Store
+    -   build type cannot be side-loaded on a simulator or device
+    -   build type can only be distributed through App Store Connect
+-   distribution provisioning profile
+    -   run the `eas credentials` command in the terminal
+        -   Platform? iOS
+        -   Build Profile? production
+        -   Log in to Apple Account? Y -> log in to Apple Developer Account
+        -   Want to do? build credentials -> All: Set up all the required credentials to build your product
+        -   Reuse previous Distribution Certificate? Y
+        -   Generate a new Apple Provisioning Profile? Y -> creates the provisioning profile for the production app -> cntrl + c to exit EAS CLI
+-   `eas build --platform ios` - creates an iOS produc tion build using the default production profile
+    -   no need to explicitly specify production with the `--profile` flag because production is set as the default profile in the EAS configuration
+    -   command queues the build and auto increments the Build Number if configured to do so
+-   `eas submit --platform ios` - submits the app binary created from the latest EAS build
+    -   needs to select the latest build id
+    -   after logging into the Apple account, Y to reuse this App Store Connect API Key to trigger the submission process
+-   `eas build --platform ios --auto-submit` - combines build creation and App Store submission into a sigle step
 
 ## References
 

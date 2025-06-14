@@ -428,6 +428,27 @@
 -   updates for non-development builds like preview or production are automatically downloaded to the device when the app starts up and makes a request for any new updates
     -   to test an update when the app is currently open, force close and reopen the app twice to download and view the changes
 
+## Ch. 20: Configure Expo GitHub app
+
+-   Open the Connect GitHub accounts page by going to expo.dev/settings in the EAS dashboard under Connections > GitHub > Connect
+-   Click the Get started button which opens a popup to authorize the Expo GitHub app > Click Install and Authorize
+-   Click Link installation once the app is installed on the GitHub account to link it to the Expo account
+    -   when linked, it will show under GitHub
+-   Connect a GitHub repositroy to a project in the EAS dashboard to enable triggering builds from the repository
+    -   EAS dashboard > Projects > Select project > Project Settings > GitHub
+    -   Connect a GitHub repository (lists GitHub repos) > Connect the correct project repository
+-   Expo GitHub app needs to know where to find the source code for a project and selects the root directory using "/" as default
+-   Expo GitHub app provides [multiple options](https://docs.expo.dev/build/building-from-github/#trigger-a-build-from-github) to trigger a build:
+    -   manually from teh builds page for a specific platform
+    -   automatically when new code is pushed to the repository
+    -   automatically using GitHub PR labels
+-   to automatically trigger a build using a GitHub PR label, specify the build image in eas.json
+    -   add android.image and ios.image properties and set their values to "latest"
+    -   create a new branch called dev
+    -   after a change is made, commit and push it, and create a PR from that branch
+    -   under labels in the PR link, create a label called "eas-build-all:development"
+    -   the Expo GitHub app will start the process of creating a developmetn build once "Create pull request" button is pressed
+
 ## References
 
 1. [Expo tutorial](https://docs.expo.dev/tutorial/introduction/)
